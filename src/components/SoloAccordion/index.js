@@ -59,12 +59,14 @@ const SoloAccordion = ({
             <View style={[styles.arrowIconContainer, arrowIconContainerStyle]}>
               {isExpanded ? (
                 <Image
-                  source={upArrowUrl ? { uri: upArrowUrl } : upArrowLocalImage}
+                  source={upArrowUrl ? {uri: upArrowUrl} : upArrowLocalImage}
                   style={[styles.rightArrow, rightArrowStyle]}
                 />
               ) : (
                 <Image
-                  source={downArrowUrl ? { uri: downArrowUrl } : downArrowLocalImage}
+                  source={
+                    downArrowUrl ? {uri: downArrowUrl} : downArrowLocalImage
+                  }
                   style={[styles.rightArrow, rightArrowStyle]}
                 />
               )}
@@ -76,20 +78,18 @@ const SoloAccordion = ({
   };
 
   return (
-    <View style={[styles.container, containerStyle]}>
-      <FlatList
-        ref={ref}
-        key={key}
-        data={data}
-        style={style}
-        bounces={false}
-        extraData={data}
-        renderItem={renderItem}
-        showsVerticalScrollIndicator={false}
-        keyExtractor={(_, index) => index.toString()}
-        contentContainerStyle={[styles.contentContainer, contentContainerStyle]}
-      />
-    </View>
+    <FlatList
+      ref={ref}
+      key={key}
+      data={data}
+      style={style}
+      bounces={false}
+      extraData={data}
+      renderItem={renderItem}
+      showsVerticalScrollIndicator={false}
+      keyExtractor={(_, index) => index.toString()}
+      contentContainerStyle={[styles.contentContainer, contentContainerStyle]}
+    />
   );
 };
 

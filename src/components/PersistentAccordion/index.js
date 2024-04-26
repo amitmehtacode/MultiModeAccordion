@@ -1,18 +1,18 @@
-import { Text, View, TouchableOpacity, FlatList, Image } from "react-native";
-import React, { useState } from "react";
-import styles from "./styles";
-import { removeSpace, screenTransition } from "../../constants";
+import {Text, View, TouchableOpacity, FlatList, Image} from 'react-native';
+import React, {useState} from 'react';
+import styles from './styles';
+import {removeSpace, screenTransition} from '../../constants';
 
 const PersistentAccordion = ({
-  key = "",
+  key = '',
   data = [],
   ref = () => {},
-  upArrowUrl = "",
-  upArrowIcon = "",
+  upArrowUrl = '',
+  upArrowIcon = '',
   showArrow = true,
   style = () => {},
-  downArrowUrl = "",
-  downArrowIcon = "",
+  downArrowUrl = '',
+  downArrowIcon = '',
   onPress = () => {},
   withAnimation = true,
   wrapperStyle = () => {},
@@ -25,11 +25,11 @@ const PersistentAccordion = ({
   arrowIconContainerStyle = () => {},
   questionTitleActiveStyle = () => {},
   boxContainerExpandedStyle = () => {},
-  upArrowLocalImage = require("../../assets/arrowUp.png"),
-  downArrowLocalImage = require("../../assets/arrowDown.png"),
+  upArrowLocalImage = require('../../assets/arrowUp.png'),
+  downArrowLocalImage = require('../../assets/arrowDown.png'),
 }) => {
-  const renderItem = ({ item, index }) => {
-    const { question, answer } = item;
+  const renderItem = ({item, index}) => {
+    const {question, answer} = item;
     return (
       <View key={index} style={styles.seprationStyle}>
         <Accordion
@@ -78,11 +78,11 @@ const PersistentAccordion = ({
 export default PersistentAccordion;
 
 export const Accordion = ({
-  question = "",
-  answer = "",
-  upArrowUrl = "",
+  question = '',
+  answer = '',
+  upArrowUrl = '',
   showArrow = true,
-  downArrowUrl = "",
+  downArrowUrl = '',
   withAnimation = true,
   wrapperStyle = () => {},
   answerTextStyle = () => {},
@@ -92,8 +92,8 @@ export const Accordion = ({
   boxContainerExpandedStyle = () => {},
   questionTitleActiveStyle = () => {},
   actionBoxContainerStyle = () => {},
-  upArrowLocalImage = require("../../assets/arrowUp.png"),
-  downArrowLocalImage = require("../../assets/arrowDown.png"),
+  upArrowLocalImage = require('../../assets/arrowUp.png'),
+  downArrowLocalImage = require('../../assets/arrowDown.png'),
   onPress = () => {},
 }) => {
   const [isActive, setIsActive] = useState(false);
@@ -106,8 +106,7 @@ export const Accordion = ({
           onPress();
           withAnimation && screenTransition();
           setIsActive(!isActive);
-        }}
-      >
+        }}>
         <View style={[styles.accordionSubContainer, wrapperStyle]}>
           <Text
             style={[
@@ -115,20 +114,21 @@ export const Accordion = ({
               questionTextStyle,
               questionTitleActiveStyle,
               isActive && [styles.questionTitleActive, actionBoxContainerStyle],
-            ]}
-          >
+            ]}>
             {question}
           </Text>
           {showArrow ? (
             <View style={[styles.arrowIconContainer, arrowIconContainerStyle]}>
               {isActive ? (
                 <Image
-                  source={upArrowUrl ? { uri: upArrowUrl } : upArrowLocalImage}
+                  source={upArrowUrl ? {uri: upArrowUrl} : upArrowLocalImage}
                   style={[styles.rightArrow, rightArrowStyle]}
                 />
               ) : (
                 <Image
-                  source={downArrowUrl ? { uri: downArrowUrl } : downArrowLocalImage}
+                  source={
+                    downArrowUrl ? {uri: downArrowUrl} : downArrowLocalImage
+                  }
                   style={[styles.rightArrow, rightArrowStyle]}
                 />
               )}

@@ -1,10 +1,12 @@
 import React from 'react';
 import SoloAccordion from '../SoloAccordion';
 import PersistentAccordion from '../PersistentAccordion';
+import NestedAccordion from '../NestedAccordion';
 
 const MultiModeAccordion = ({
   soloAccordion = false,
-  persistentAccordion = true,
+  persistentAccordion = false,
+  nestedAccordion = false,
   ...props
 }) => {
   const {
@@ -17,10 +19,12 @@ const MultiModeAccordion = ({
     boxContainerExpandedStyle = () => {},
     containerStyle = () => {},
     contentContainerStyle = () => {},
+    parentWrapperStyle = () => {},
     downArrowIcon = '',
     downArrowUrl = '',
     questionTextStyle = () => {},
     rightArrowStyle = () => {},
+    childWrapperStyle = () => {},
     upArrowIcon = '',
     key = '',
     ref = () => {},
@@ -93,8 +97,64 @@ const MultiModeAccordion = ({
         wrapperStyle={wrapperStyle}
       />
     );
+  } else if (nestedAccordion) {
+    return (
+      <NestedAccordion
+        {...props}
+        data={data}
+        answerTextStyle={answerTextStyle}
+        childWrapperStyle={childWrapperStyle}
+        containerStyle={containerStyle}
+        key={key}
+        onPress={onPress}
+        parentWrapperStyle={parentWrapperStyle}
+        questionTextStyle={questionTextStyle}
+        withAnimation={withAnimation}
+        upArrowLocalImage={upArrowLocalImage}
+        downArrowLocalImage={downArrowLocalImage}
+        upArrowUrl={upArrowUrl}
+        downArrowUrl={downArrowUrl}
+        actionBoxContainerStyle={actionBoxContainerStyle}
+        arrowIconContainerStyle={arrowIconContainerStyle}
+        boxContainerExpandedStyle={boxContainerExpandedStyle}
+        contentContainerStyle={contentContainerStyle}
+        ref={ref}
+        rightArrowStyle={rightArrowStyle}
+        style={style}
+        wrapperStyle={wrapperStyle}
+      />
+    );
   } else {
-    return null;
+    return (
+      <PersistentAccordion
+        {...props}
+        showArrow
+        data={data}
+        withAnimation={withAnimation}
+        upArrowLocalImage={upArrowLocalImage}
+        downArrowLocalImage={downArrowLocalImage}
+        onPress={() => {
+          onPress();
+        }}
+        actionBoxContainerStyle={actionBoxContainerStyle}
+        answerTextStyle={answerTextStyle}
+        arrowIconContainerStyle={arrowIconContainerStyle}
+        boxContainerExpandedStyle={boxContainerExpandedStyle}
+        containerStyle={containerStyle}
+        contentContainerStyle={contentContainerStyle}
+        downArrowIcon={downArrowIcon}
+        downArrowUrl={downArrowUrl}
+        key={key}
+        questionTextStyle={questionTextStyle}
+        questionTitleActiveStyle={questionTitleActiveStyle}
+        ref={ref}
+        rightArrowStyle={rightArrowStyle}
+        style={style}
+        upArrowIcon={upArrowIcon}
+        upArrowUrl={upArrowUrl}
+        wrapperStyle={wrapperStyle}
+      />
+    );
   }
 };
 
