@@ -1,11 +1,10 @@
 import React from 'react';
 import SoloAccordion from '../SoloAccordion';
 import PersistentAccordion from '../PersistentAccordion';
-import { Text } from 'react-native';
 
 const MultiModeAccordion = ({
   soloAccordion = false,
-  persistentAccordion = false,
+  persistentAccordion = true,
   ...props
 }) => {
   const {
@@ -95,7 +94,7 @@ const MultiModeAccordion = ({
       />
     );
   } else {
-    return <Text>lol</Text>;
+    return null;
   }
 };
 
